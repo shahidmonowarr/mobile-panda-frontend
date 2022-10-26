@@ -1,6 +1,4 @@
-# Getting Started with Create React App
-
-Visite our Website - [Mobile-Panda](https://github.com/facebook/create-react-app).
+## Visite our Website - [Mobile-Panda](https://github.com/facebook/create-react-app).
 
 ```
 ## Available Service Specification
