@@ -1,0 +1,31 @@
+.heading-text{
+    font-size: 45px;
+    font-weight: 800;
+}
+img.vert-move {
+    -webkit-animation: mover 1.3s infinite  alternate;
+    animation: mover 1.3s infinite  alternate;
+}
+img.vert-move {
+    -webkit-animation: mover 1.3s infinite  alternate;
+    animation: mover 1.3s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+@media screen and (min-width: 200px) and (max-width: 599px) {
+    .heading-text{
+        font-size: 45px;
+        font-weight: 800;
+    }
+}
+@media screen and (min-width: 600px) {
+    .heading-text{
+        font-size: 53px;
+    }
+}
