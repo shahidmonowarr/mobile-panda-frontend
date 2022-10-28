@@ -21,18 +21,17 @@ const Banner = () => {
           <Grid item xs={12} lg={3.5}>
             <Box sx={{ marginBottom: { xs: 2, lg: 0 } }}>
               <Typography
-                tag="h1"
-                className=" heading-text"
+                variant="h1"
+                sx={{fontSize:"45px", fontWeight: "800", marginBottom: "10px" }}
                 includeWhiteSpaces
                 threshold={0.1}
                 rootMargin="20%"
               >
-                Comfortable interfaces and Unbeatable price.
+                Comfortable Interfaces and Unbeatable Price.
               </Typography>
-              <Typography sx={{ mb: 3 }} variant="body1" gutterBottom>
-                Let us handle your project, professionally. <br />
-                With well written codes, we build amazing apps for all
-                platforms, mobile and web apps in general.
+              <Typography sx={{ mb: 1 }} variant="body1" gutterBottom>
+                Let's find your favourite mobile here. <br />
+                With the best price and quality. Also we have a lot of offers. Find out more. Grab your mobile now.
               </Typography>
               <Button
                 sx={{

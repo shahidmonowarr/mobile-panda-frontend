@@ -35,31 +35,33 @@ const Header = () => {
 
   return (
     <div>
-      <AppBar sx={{
-        backgroundColor: "#FBD062",
-        color: "black",
-        pt: 1
-      }}position="static">
+      <AppBar
+        sx={{
+          backgroundColor: "#FBD062",
+          color: "black",
+          pt: 1,
+        }}
+        position="static"
+      >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
               variant="h6"
               noWrap
-              component="a"
-              href="/"
+              component="div"
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
+                marginLeft: "80px",
               }}
             >
-              <NavLink to='/'>
-           <img style={{width: '170px', padding: '12px'}} src="https://i.ibb.co/vqZxqCQ/Mobile-Panda-1-2.png" alt="" />
-         </NavLink>
+              <NavLink to="/">
+                <img
+                  style={{ width: "170px", padding: "12px" }}
+                  src="https://i.ibb.co/vqZxqCQ/Mobile-Panda-1-2.png"
+                  alt=""
+                />
+              </NavLink>
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -92,61 +94,61 @@ const Header = () => {
                 }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
-                <NavLink style={{ textDecoration: "none", color: 'black'}} to="/home">
-                  <Typography textAlign="center">Home</Typography>
-                </NavLink>
-              </MenuItem>
-              <MenuItem>
-                <NavLink style={{ textDecoration: "none", color: 'black'}} to="/services">
-                  <Typography textAlign="center">Services</Typography>
-                </NavLink>
-              </MenuItem>
-              <MenuItem>
-                <NavLink style={{ textDecoration: "none", color: 'black'}} to="/">
-                  <Typography textAlign="center">Contact Us</Typography>
-                </NavLink>
-              </MenuItem>
+                  <NavLink
+                    style={{ textDecoration: "none", color: "black" }}
+                    to="/home"
+                  >
+                    <Typography textAlign="center">Home</Typography>
+                  </NavLink>
+                </MenuItem>
+                <MenuItem>
+                  <NavLink
+                    style={{ textDecoration: "none", color: "black" }}
+                    to="/services"
+                  >
+                    <Typography textAlign="center">Services</Typography>
+                  </NavLink>
+                </MenuItem>
+                <MenuItem>
+                  <NavLink
+                    style={{ textDecoration: "none", color: "black" }}
+                    to="/"
+                  >
+                    <Typography textAlign="center">Contact Us</Typography>
+                  </NavLink>
+                </MenuItem>
               </Menu>
             </Box>
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href=""
-              sx={{
-                mr: 2,
-                display: { xs: "flex", md: "none" },
-                flexGrow: 1,
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              <NavLink to='/'>
-           <img style={{width: '150px', padding: '12px'}} src="https://i.ibb.co/vqZxqCQ/Mobile-Panda-1-2.png" alt="" />
-         </NavLink>
-            </Typography>
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex", justifyContent: "flex-end" } }}>
-            <MenuItem onClick={handleCloseNavMenu}>
-                <NavLink style={{ textDecoration: "none", color: 'black'}} to="/home">
-                  <Typography textAlign="center">Home</Typography>
-                </NavLink>
-              </MenuItem>
-              <MenuItem>
-                <NavLink style={{ textDecoration: "none", color: 'black'}} to="/services">
-                  <Typography textAlign="center">Services</Typography>
-                </NavLink>
-              </MenuItem>
-              <MenuItem>
-                <NavLink style={{ textDecoration: "none", color: 'black'}} to="/">
-                  <Typography textAlign="center">Contact Us</Typography>
-                </NavLink>
-              </MenuItem>
-            </Box>
 
-            <Box sx={{ flexGrow: 0 }}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+            >
+              <NavLink to="/">
+                <img
+                  style={{ width: "150px", padding: "12px" }}
+                  src="https://i.ibb.co/vqZxqCQ/Mobile-Panda-1-2.png"
+                  alt=""
+                />
+              </NavLink>
+            </Typography>
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex", justifyContent: "flex-end"}, marginRight: '50px'}}>
+            <NavLink style={{ textDecoration: "none" }} to="/">
+              <Box style={{ color: "black", marginRight: 30, textTransform: 'capitalize', fontSize: "17px"}}>Home</Box>
+            </NavLink>
+
+            <NavLink style={{ textDecoration: "none" }} to="/services">
+              <Box style={{ color: "black",  marginRight: 30, textTransform: 'capitalize', fontSize: "17px"}}>Services</Box>
+            </NavLink>
+
+            <NavLink style={{ textDecoration: "none" }} to="/contact-us">
+              <Box style={{ color: "black" , textTransform: 'capitalize', fontSize: "17px"}}>Contact Us</Box>
+            </NavLink>
+          </Box>
+
+            <Box  sx={{ flexGrow: 0, marginRight: {lg: '100px'}}}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
