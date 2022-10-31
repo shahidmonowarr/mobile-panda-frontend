@@ -12,7 +12,7 @@ const Specifications = () => {
       .then((data) => setSpecs(data));
   }, []);
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 , marginTop: "100px", marginBottom: '90px'}}>
       <Container>
         <Typography
           sx={{ fontWeight: 'bold', m: 2 }}

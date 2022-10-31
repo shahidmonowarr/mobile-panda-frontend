@@ -4,7 +4,7 @@ import React from "react";
 const Spec = ({ spec }) => {
   const { serviceName1, serviceName2, description, img } = spec;
   return (
-    <Grid sx={{ ":hover": {boxShadow: 10, borderRadius: 5, transform: 'scale(1.05)'}, cursor: 'pointer', justifyContent: 'space-evenly', marginX: 'auto', mb: 5, transition: 'transform 0.5s'}} item xs={12} sm={4} md={4}>
+    <Grid sx={{ ":hover": {boxShadow: 10, borderRadius: 5, transform: 'scale(1.05)'}, cursor: 'pointer', justifyContent: 'space-evenly', marginX: 'auto', mb: 5, transition: 'transform 0.5s', marginTop: "30px", marginBottom: '20px'}} item xs={12} sm={4} md={4}>
             <Card sx={{ minWidth: 275, border: 0, boxShadow: 0 }}>
                 <CardMedia
                     component="img"
