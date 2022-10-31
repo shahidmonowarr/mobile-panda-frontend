@@ -1,0 +1,24 @@
+[
+    {   
+        "id": 1,
+        "img": "https://i.ibb.co/ygyz7Rj/camera.jpg",
+        "serviceName1": "Perfect cut",
+        "serviceName2": "Dual camera",
+        "description": "Here perfect dual triple camera setup available. Also This is an native android system camera app. HD Camera utilized all advantage of your phone  "
+    },
+    {   
+        "id": 2,
+        "img": "https://i.ibb.co/vzKmTgk/processor.webp",
+        "serviceName1": "Pretty",
+        "serviceName2": "Intelligent Processing",
+        "description": "The processor of your smartphone is the component that converts all your actions into visual changes on the screen. "
+
+    },
+    {   
+        "id": 3,
+        "img": "https://i.ibb.co/2v0hD51/ram.webp",
+        "serviceName1": "Most Popular",
+        "serviceName2": "8GB DDR5 ram",
+        "description": "Double Data Rate 5 Synchronous Dynamic Random-Access Memory is a type of synchronous dynamic random-access memory. DDR5 is better.  "
+    }
+]

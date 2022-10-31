@@ -19,7 +19,7 @@ const Banner = () => {
           rowSpacing={1}
         >
           <Grid item xs={12} lg={3.5}>
-            <Box sx={{ marginBottom: { xs: 2, lg: 0 } }}>
+            <Box sx={{ marginBottom: { xs: 2, lg: 0 }, marginLeft: { xl: 10, md: 0 , lg: 0} }}>
               <Typography
                 variant="h1"
                 sx={{fontSize:"45px", fontWeight: "800", marginBottom: "10px" }}
