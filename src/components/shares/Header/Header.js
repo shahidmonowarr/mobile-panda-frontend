@@ -112,7 +112,7 @@ const Header = () => {
                 <MenuItem>
                   <NavLink
                     style={{ textDecoration: "none", color: "black" }}
-                    to="/"
+                    to="/contact-us"
                   >
                     <Typography textAlign="center">Contact Us</Typography>
                   </NavLink>
