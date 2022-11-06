@@ -1,17 +1,48 @@
-import { Button, Grid, TextField } from '@mui/material';
-import { Box, Container } from '@mui/system';
-import React from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
-import auth from '../../../firebase.init';
+import { Button, Grid, TextField } from "@mui/material";
+import { Box, Container } from "@mui/system";
+import React from "react";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle
+} from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import Loading from "../../../components/shares/Loading/Loading";
+import auth from "../../../firebase.init";
 
 const Register = () => {
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  if(user){
-    console.log(user);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  let signInError;
+
+  if (loading || gLoading) {
+    return <Loading></Loading>;
   }
-    return (
-        <Container>
+
+  if (error || gError) {
+    signInError = (
+      <p style={{ color: "red" }}>{error?.message || gError?.message}</p>
+    );
+  }
+
+  if (user || gUser) {
+    console.log(gUser || user);
+  }
+
+  const onSubmit = (data) => {
+    console.log(data);
+    createUserWithEmailAndPassword(data.email, data.password);
+  };
+  return (
+    <Container>
       <Box sx={{ width: "200px", marginX: "auto", marginY: "50px" }}>
         <img
           style={{ width: "100%" }}
@@ -28,58 +59,104 @@ const Register = () => {
               borderRadius: "15px",
             }}
           >
-            
-              <form >
-                <TextField
-                  sx={{ width: "100%" }}
-                  label="Name"
-                  type="text"
-                  name="name"
-                  
-                  variant="standard"
-                />
-                <TextField
-                  sx={{ width: "100%" }}
-                  label="Email"
-                  type="email"
-                  name="email"
-                  
-                  variant="standard"
-                />
-                <TextField
-                  sx={{ width: "100%" }}
-                  label="Password"
-                  type="password"
-                  name="password"
-                  
-                  variant="standard"
-                />
-                <TextField
-                  sx={{ width: "100%" }}
-                  label="Retype Your Password"
-                  type="password"
-                  name="password2"
-                  
-                  variant="standard"
-                />
-                <Box>
-                  <Button
-                    type="submit"
-                    sx={{
-                      width: "100%",
-                      marginY: 3,
-                      borderRadius: "30px",
-                      backgroundColor: "black",
-                      ":hover": { backgroundColor: "black" },
-                      textTransform: "capitalize",
-                      fontSize: "17px",
-                    }}
-                    variant="contained"
-                  >
-                    Register
-                  </Button>
-                </Box>
-              </form>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <TextField
+                sx={{ width: "100%" }}
+                label="Name"
+                type="text"
+                name="name"
+                variant="standard"
+                {...register("name", {
+                  required: {
+                    value: true,
+                    message: "name is required",
+                  },
+                })}
+              />
+              <label className="label mb-2">
+                {errors.name?.type === "required" && (
+                  <span style={{ color: "red" }} className="label-text-alt">
+                    {errors.name.message}
+                  </span>
+                )}
+              </label>
+              <TextField
+                sx={{ width: "100%" }}
+                label="Email"
+                type="email"
+                name="email"
+                variant="standard"
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "email is required",
+                  },
+                  pattern: {
+                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                    message: "Provide a valid Email",
+                  },
+                })}
+              />
+              <label className="label mb-2 text-danger">
+                {errors.email?.type === "required" && (
+                  <span style={{ color: "red" }} className="label-text-alt">
+                    {errors.email.message}
+                  </span>
+                )}
+                {errors.email?.type === "pattern" && (
+                  <span style={{ color: "red" }} className="label-text-alt">
+                    {errors.email.message}
+                  </span>
+                )}
+              </label>
+              <TextField
+                sx={{ width: "100%" }}
+                label="Password"
+                type="password"
+                name="password"
+                variant="standard"
+                {...register("password", {
+                  required: {
+                    value: true,
+                    message: "password is required",
+                  },
+                  minLength: {
+                    value: 6,
+                    message: "Must be 6 characters or longer",
+                  },
+                })}
+              />
+              <label className="label mb-2 text-danger">
+                {errors.password?.type === "required" && (
+                  <span style={{ color: "red" }} className="label-text-alt">
+                    {errors.password.message}
+                  </span>
+                )}
+                {errors.password?.type === "minLength" && (
+                  <span style={{ color: "red" }} className="label-text-alt">
+                    {errors.password.message}
+                  </span>
+                )}
+              </label>
+              {signInError}
+              <Box>
+                <Button
+                  type="submit"
+                  sx={{
+                    width: "100%",
+                    marginY: 3,
+                    borderRadius: "30px",
+                    backgroundColor: "black",
+                    ":hover": { backgroundColor: "black" },
+                    textTransform: "capitalize",
+                    fontSize: "17px",
+                  }}
+                  variant="contained"
+                >
+                  Register
+                </Button>
+              </Box>
+            </form>
             <p style={{ textAlign: "center", fontWeight: "bold" }}>
               {" "}
               Already have an account ? Please{" "}
@@ -99,6 +176,7 @@ const Register = () => {
             >
               ----------- or -----------
             </p>
+
             <Box style={{ width: "100%", margin: "auto", marginY: "10px" }}>
               <Button
                 type="submit"
@@ -110,7 +188,7 @@ const Register = () => {
                   fontSize: "17px",
                 }}
                 variant="outlined"
-                onClick={ () => signInWithGoogle()}
+                onClick={() => signInWithGoogle()}
               >
                 <img
                   style={{ width: "30px" }}
@@ -125,7 +203,7 @@ const Register = () => {
         </Grid>
       </Grid>
     </Container>
-    );
+  );
 };
 
 export default Register;

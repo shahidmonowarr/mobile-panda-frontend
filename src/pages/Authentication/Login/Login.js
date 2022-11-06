@@ -1,15 +1,45 @@
 import { Button, Grid, TextField } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import React from "react";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import Loading from "../../../components/shares/Loading/Loading";
 import auth from "../../../firebase.init";
 
 const Login = () => {
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  if(user){
-    console.log(user);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+  const [
+    signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(auth);
+
+  let signInError;
+
+  if (loading || gLoading) {
+    return <Loading></Loading>
   }
+
+  if (error || gError) {
+    signInError = <p style={{ color: "red" }}>{error?.message || gError?.message}</p>;
+  }
+
+  if (user || gUser) {
+    console.log(user || gUser);
+  }
+
+  const onSubmit = (data) => {
+    console.log(data);
+    signInWithEmailAndPassword(data.email, data.password);
+  };
+
   return (
     <Container>
       <Box sx={{ width: "200px", marginX: "auto", marginY: "50px" }}>
@@ -28,14 +58,36 @@ const Login = () => {
               borderRadius: "15px",
             }}
           >
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <TextField
                 sx={{ width: "100%" }}
                 label="Email"
                 type="email"
                 name="email"
                 variant="standard"
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "email is required",
+                  },
+                  pattern: {
+                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                    message: "Provide a valid Email",
+                  },
+                })}
               />{" "}
+              <label className="label mb-2 text-danger">
+                {errors.email?.type === "required" && (
+                  <span style={{color: 'red'}} className="label-text-alt text-red">
+                    {errors.email.message}
+                  </span>
+                )}
+                {errors.email?.type === "pattern" && (
+                  <span style={{color: 'red'}} className="label-text-alt text-red">
+                    {errors.email.message}
+                  </span>
+                )}
+              </label>
               <br />
               <TextField
                 sx={{ width: "100%" }}
@@ -43,7 +95,30 @@ const Login = () => {
                 type="password"
                 name="password"
                 variant="standard"
+                {...register("password", {
+                  required: {
+                    value: true,
+                    message: "password is required",
+                  },
+                  minLength: {
+                    value: 6,
+                    message: "Must be 6 characters or longer",
+                  },
+                })}
               />
+              <label className="label mb-2 text-danger">
+                {errors.password?.type === "required" && (
+                  <span style={{color: 'red'}} className="label-text-alt">
+                    {errors.password.message}
+                  </span>
+                )}
+                {errors.password?.type === "minLength" && (
+                  <span style={{color: 'red'}} className="label-text-alt">
+                    {errors.password.message}
+                  </span>
+                )}
+              </label>
+              {signInError}
               <Box>
                 <Button
                   type="submit"
@@ -93,7 +168,7 @@ const Login = () => {
                   fontSize: "17px",
                 }}
                 variant="outlined"
-                onClick={ () => signInWithGoogle()}
+                onClick={() => signInWithGoogle()}
               >
                 <img
                   style={{ width: "30px" }}
