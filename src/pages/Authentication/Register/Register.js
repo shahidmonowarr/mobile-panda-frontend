@@ -1,9 +1,15 @@
 import { Button, Grid, TextField } from '@mui/material';
 import { Box, Container } from '@mui/system';
 import React from 'react';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../../firebase.init';
 
 const Register = () => {
+  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  if(user){
+    console.log(user);
+  }
     return (
         <Container>
       <Box sx={{ width: "200px", marginX: "auto", marginY: "50px" }}>
@@ -104,6 +110,7 @@ const Register = () => {
                   fontSize: "17px",
                 }}
                 variant="outlined"
+                onClick={ () => signInWithGoogle()}
               >
                 <img
                   style={{ width: "30px" }}
