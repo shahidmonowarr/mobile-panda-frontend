@@ -2,13 +2,14 @@
     position: fixed;
     bottom: 30px;
     right: 12px;
-    height: 60px;
+    height: 30px;
+    width: 30px;
     color: rgb(53, 14, 14);
     background-color: rgb(185, 185, 154);
     z-index: 10;
     border-radius: 50%;
     border: none;
-    padding-top: 10px;
+    padding-top: 5px;
     font-size: larger;
     font-weight: 900;
 }

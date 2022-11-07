@@ -21,7 +21,7 @@ const settings = ["Dashboard", "Logout"];
 const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   const logOut = () => {
     signOut(auth);
