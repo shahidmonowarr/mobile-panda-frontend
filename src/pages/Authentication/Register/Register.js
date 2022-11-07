@@ -3,10 +3,11 @@ import { Box, Container } from "@mui/system";
 import React from "react";
 import {
   useCreateUserWithEmailAndPassword,
-  useSignInWithGoogle
+  useSignInWithGoogle,
+  useUpdateProfile
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../../components/shares/Loading/Loading";
 import auth from "../../../firebase.init";
 
@@ -21,15 +22,19 @@ const Register = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+  const navigate = useNavigate();
+
   let signInError;
 
-  if (loading || gLoading) {
+  if (loading || gLoading || updating) {
     return <Loading></Loading>;
   }
 
-  if (error || gError) {
+  if (error || gError || updateError) {
     signInError = (
-      <p style={{ color: "red" }}>{error?.message || gError?.message}</p>
+      <p style={{ color: "red" }}>{error?.message || gError?.message || updateError?.message}</p>
     );
   }
 
@@ -37,9 +42,12 @@ const Register = () => {
     console.log(gUser || user);
   }
 
-  const onSubmit = (data) => {
-    console.log(data);
-    createUserWithEmailAndPassword(data.email, data.password);
+  const onSubmit = async data => {
+    // console.log(data);
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
+    console.log('update done');
+    navigate('/home');
   };
   return (
     <Container>
