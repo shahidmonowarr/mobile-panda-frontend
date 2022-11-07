@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import BackToTop from './components/shares/BackToTop/BackToTop';
 import Footer from './components/shares/Footer/Footer';
 import Header from './components/shares/Header/Header';
 import Login from './pages/Authentication/Login/Login';
@@ -11,6 +12,7 @@ import NotFound from './pages/NotFound/NotFound';
 function App() {
   return (
     <div className="App">
+      <BackToTop />
       <BrowserRouter>
       <Header />
       <Routes>
