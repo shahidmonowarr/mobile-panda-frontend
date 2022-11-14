@@ -3,6 +3,7 @@ import './App.css';
 import BackToTop from './components/shares/BackToTop/BackToTop';
 import Footer from './components/shares/Footer/Footer';
 import Header from './components/shares/Header/Header';
+import AllServices from './pages/AllServices/AllServices/AllServices';
 import Login from './pages/Authentication/Login/Login';
 import Register from './pages/Authentication/Register/Register';
 import Contact from './pages/Contact/Contact';
@@ -21,6 +22,7 @@ function App() {
         <Route path="contact-us" element={<Contact />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="services" element={<AllServices />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
