@@ -11,7 +11,7 @@ const SingleService = ({singleService}) => {
         <Card sx={{borderRadius: '30px'}}>
         <CardMedia
           component="img"
-          sx={{width: '100%', margin: 'auto', height: '200px'}}
+          sx={{width: '80%', margin: 'auto', height: '300px'}}
           image={image}
           alt="green iguana"
         />
@@ -19,13 +19,10 @@ const SingleService = ({singleService}) => {
           <Typography sx={{fontWeight: 'bold'}} gutterBottom variant="h6" component="div">
             {name}
           </Typography>
-          <Typography sx={{}} gutterBottom variant="h6" component="div">
+          <Typography sx={{ fontSize:"15px"}} gutterBottom variant="h6" component="div">
             Price: $ {price}
           </Typography>
-          <Typography sx={{}} variant="body2" color="text.secondary">
-            {description.slice(0, 120)}
-          </Typography>
-          <Box sx={{textAlign: 'center', marginTop: '20px'}}>
+          <Box sx={{textAlign: 'center', marginTop: '10px'}}>
             <Link style={{textDecoration: 'none'}} to={`/services/${_id}`}>
                <Button variant="contained" sx={{px: 4, borderRadius: '10px', textTransform: 'capitalize', backgroundColor: 'black', ":hover": {backgroundColor: 'black'}}}>view service</Button>
             </Link>

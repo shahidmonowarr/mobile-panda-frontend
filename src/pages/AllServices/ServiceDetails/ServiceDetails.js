@@ -115,10 +115,10 @@ const ServiceDetails = () => {
                   What we provide ?
                 </Typography>
                 <ul>
-                  <li>24 hours costomer sopport</li>
-                  <li>5 peapule team will work on your project</li>
-                  <li>Immediate slove to your problem </li>
-                  <li>We commited to delivar your project on time</li>
+                  <li>24/7 customer support</li>
+                  <li>Our Best team will work on your product</li>
+                  <li>Immediate response to your email </li>
+                  <li>We committed to deliver your products on time</li>
                 </ul>
               </Box>
               <Button

@@ -19,7 +19,7 @@ const AllServices = () => {
       return currentService.category === serviceCate;
     });
     if (serviceCate === "All") {
-      setTempServices(services.slice(0, 9));
+      setTempServices(services);
     } else {
       setTempServices(cateServices);
     }
