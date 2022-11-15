@@ -3,7 +3,7 @@ import { Box, Container } from "@mui/system";
 import React from "react";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../../components/shares/Loading/Loading";
 import auth from "../../../firebase.init";
 
@@ -22,6 +22,9 @@ const Login = () => {
   ] = useSignInWithEmailAndPassword(auth);
 
   let signInError;
+  const navigate = useNavigate();
+  const location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
 
   if (loading || gLoading) {
     return <Loading></Loading>
@@ -32,7 +35,8 @@ const Login = () => {
   }
 
   if (user || gUser) {
-    console.log(user || gUser);
+    // console.log(user || gUser);
+    navigate(from, { replace: true });
   }
 
   const onSubmit = (data) => {
