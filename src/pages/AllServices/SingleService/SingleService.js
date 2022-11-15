@@ -26,7 +26,7 @@ const SingleService = ({singleService}) => {
             {description.slice(0, 120)}
           </Typography>
           <Box sx={{textAlign: 'center', marginTop: '20px'}}>
-            <Link style={{textDecoration: 'none'}} >
+            <Link style={{textDecoration: 'none'}} to={`/services/${_id}`}>
                <Button variant="contained" sx={{px: 4, borderRadius: '10px', textTransform: 'capitalize', backgroundColor: 'black', ":hover": {backgroundColor: 'black'}}}>view service</Button>
             </Link>
           </Box>

@@ -4,6 +4,7 @@ import BackToTop from './components/shares/BackToTop/BackToTop';
 import Footer from './components/shares/Footer/Footer';
 import Header from './components/shares/Header/Header';
 import AllServices from './pages/AllServices/AllServices/AllServices';
+import ServiceDetails from './pages/AllServices/ServiceDetails/ServiceDetails';
 import Login from './pages/Authentication/Login/Login';
 import Register from './pages/Authentication/Register/Register';
 import Contact from './pages/Contact/Contact';
@@ -23,6 +24,7 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="services" element={<AllServices />} />
+        <Route path="services/:serviceId" element={<ServiceDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
