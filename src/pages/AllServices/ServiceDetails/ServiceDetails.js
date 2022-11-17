@@ -1,12 +1,18 @@
-import { Button, Grid, Rating, Typography } from "@mui/material";
+import { Alert, Button, Grid, Rating, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import useServiceDetails from "../../../hooks/useServiceDetails/useServiceDetails";
+import CheckOut from "../../CheckOut/CheckOut";
 
 const ServiceDetails = () => {
   const { serviceId } = useParams();
   const [serviceDetails] = useServiceDetails(serviceId);
+  const [orderSuccessful, setOrderSuccessful] = useState(false);
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleModalOpen = () => setModalOpen(true);
+  const handleModalClose = () => setModalOpen(false);
 
   return (
     <Box>
@@ -28,6 +34,14 @@ const ServiceDetails = () => {
           >
             <img style={{ width: "100%" }} src={serviceDetails.image} alt="" />
           </Box>
+          {orderSuccessful && (
+            <Alert
+              sx={{ width: "95%", marginX: "auto", marginTop: "20px" }}
+              severity="success"
+            >
+              Order Confirmed Successfully!
+            </Alert>
+          )}
         </Grid>
         <Grid item lg={5} md={5} xs={11}>
           <Box sx={{ marginBottom: "40px" }}>
@@ -123,6 +137,7 @@ const ServiceDetails = () => {
               </Box>
               <Button
                 variant="contained"
+                onClick={handleModalOpen}
                 sx={{
                   textTransform: "capitalize",
                   px: 4,
@@ -137,6 +152,13 @@ const ServiceDetails = () => {
           </Box>
         </Grid>
       </Grid>
+
+      <CheckOut
+        modalOpen={modalOpen}
+        handleModalClose={handleModalClose}
+        servicesDetails={serviceDetails}
+        setOrderSuccessful={setOrderSuccessful}
+      ></CheckOut>
     </Box>
   );
 };
