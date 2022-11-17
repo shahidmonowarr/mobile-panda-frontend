@@ -23,9 +23,34 @@ const CheckOut = ({
     setOrderSuccessful,
   }) => {
     const [user] = useAuthState(auth);
-    const { name, price } = servicesDetails;
+    const { name, price, image, description } = servicesDetails;
 
-    const handlePlaceOrder = () => {};
+    const handlePlaceOrder = (e) => {
+        e.preventDefault();
+        const orderDetails = {
+            email: user.email,
+            service: name,
+            image: image,
+            price: price,
+            description: description,
+            status: "Pending",
+        }
+        fetch("http://localhost:5000/order", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(orderDetails),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data) {
+                    setOrderSuccessful(true);
+                    handleModalClose();
+                    console.log(data);
+                }
+            });
+    };
 
     return (
         <>

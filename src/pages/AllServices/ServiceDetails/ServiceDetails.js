@@ -8,7 +8,7 @@ import CheckOut from "../../CheckOut/CheckOut";
 const ServiceDetails = () => {
   const { serviceId } = useParams();
   const [serviceDetails] = useServiceDetails(serviceId);
-  const [orderSuccessful, setOrderSuccessful] = useState(false);
+  const [orderSuccessful, setOrderSuccessful] = React.useState(false);
 
   const [modalOpen, setModalOpen] = useState(false);
   const handleModalOpen = () => setModalOpen(true);
