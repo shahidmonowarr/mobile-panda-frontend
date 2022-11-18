@@ -9,6 +9,7 @@ import Login from './pages/Authentication/Login/Login';
 import Register from './pages/Authentication/Register/Register';
 import RequireAuth from './pages/Authentication/RequireAuth/RequireAuth';
 import Contact from './pages/Contact/Contact';
+import AllOrders from './pages/Dashboard/AllOrders/AllOrders';
 import Home from './pages/Home/Home';
 import NotFound from './pages/NotFound/NotFound';
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="contact-us" element={<Contact />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="allOrders" element={<AllOrders />} />
         <Route path="services" element={<AllServices />} />
         <Route path="services/:serviceId" element={<RequireAuth><ServiceDetails /></RequireAuth>} />
         <Route path="*" element={<NotFound />} />
