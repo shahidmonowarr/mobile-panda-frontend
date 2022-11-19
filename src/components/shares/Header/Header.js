@@ -216,7 +216,7 @@ const Header = () => {
                   onClose={handleCloseUserMenu}
                 >
                   <MenuItem onClick={handleCloseUserMenu}>
-                    <NavLink style={{ textDecoration: "none" }} to="/">
+                    <NavLink style={{ textDecoration: "none" }} to="/dashboard">
                       <Typography style={{ color: "black" }} textAlign="center">
                         Dashboard
                       </Typography>
