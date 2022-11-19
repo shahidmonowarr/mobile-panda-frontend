@@ -1,8 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import BackToTop from "./components/shares/BackToTop/BackToTop";
-import Footer from "./components/shares/Footer/Footer";
-import Header from "./components/shares/Header/Header";
 import AllServices from "./pages/AllServices/AllServices/AllServices";
 import ServiceDetails from "./pages/AllServices/ServiceDetails/ServiceDetails";
 import Login from "./pages/Authentication/Login/Login";
@@ -19,7 +17,6 @@ function App() {
     <div className="App">
       <BackToTop />
       <BrowserRouter>
-        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="home" element={<Home />} />
@@ -46,7 +43,6 @@ function App() {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer />
       </BrowserRouter>
     </div>
   );

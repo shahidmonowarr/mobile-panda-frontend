@@ -1,149 +1,151 @@
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import MenuIcon from "@mui/icons-material/Menu";
-import MuiAppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import { styled, useTheme } from "@mui/material/styles";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import { Container } from "@mui/system";
-import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, Outlet } from "react-router-dom";
-import auth from "../../../firebase.init";
+import MenuIcon from '@mui/icons-material/Menu';
+import { ListItemButton } from '@mui/material';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import PropTypes from 'prop-types';
+import * as React from 'react';
+import { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link, Outlet } from 'react-router-dom';
+import auth from '../../../firebase.init';
 
-const drawerWidth = 220;
+const drawerWidth = 240;
 
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  })
-);
+function Dashboard(props) {
+  const [user] = useAuthState(auth);
+  
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: "flex-end",
-}));
-
-const Dashboard = (props) => {
-  const { user } = useAuthState(auth);
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  const handleDrawerOpen = () => {
-    setOpen(true);
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const [appbar, setAppbar] = useState('');
+
+
+  const drawer = (
+    <div style={{border: 'none'}}>
+       <Box sx={{ marginLeft: 5, marginTop: 3, marginBottom: 5}}>
+       <img style={{width: '150px',}} src="https://i.ibb.co/vqZxqCQ/Mobile-Panda-1-2.png" alt="" />
+       </Box>
+       {/* <Divider sx={{display: {sm: 'none'}}} /> */}
+
+      {/* <Toolbar /> */}
+      
+      <nav style={{border: 'none'}}>
+        <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="/dashboard">
+          <ListItemButton style={{paddingLeft: '40px'}} variant="text">Dashboard Home</ListItemButton>
+        </Link>
+        <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="review">
+          <ListItemButton style={{paddingLeft: '40px'}} variant="text">Make Review</ListItemButton>
+        </Link>
+        <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="/">
+          <ListItemButton style={{paddingLeft: '40px'}} variant="text">Back To Home</ListItemButton>
+        </Link>
+      </nav>
+    </div>
+  );
+
+  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Container>
-        <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="sticky" open={open}>
-        <Toolbar>
+      <AppBar
+        position="fixed"
+        sx={{
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          ml: { sm: `${drawerWidth}px` },
+          backgroundColor: 'white',
+          boxShadow: 0,
+          py: 1
+          // border: '2px solid black'
+        }}
+      >
+        <Toolbar sx={{display: 'flex', justifyContent: 'space-between'}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' }, color: 'black' }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Dashboard
-          </Typography>
+            <Box>
+               <Typography sx={{color: 'black', fontWeight: 'semiBold', textTransform: 'capitalize', paddingLeft: 5}} variant="h5" noWrap component="div">
+                  Dashboard
+               </Typography>
+            </Box>
+            <Box >
+               <Typography sx={{color: 'black', fontWeight: 'semiBold', textTransform: 'capitalize', marginRight:"20px"}} variant="body1" noWrap component="div">
+                  {user?.displayName}
+               </Typography>
+            </Box>
         </Toolbar>
       </AppBar>
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
-            width: drawerWidth,
-            boxSizing: "border-box",
-          },
-        }}
-        variant="persistent"
-        anchor="left"
-        open={open}
+      <Box
+        component="nav"
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 }, border: 'none', marginTop: 5}}
+        aria-label="mailbox folders"
       >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          <ListItem>
-            <ListItemButton>
-              <Link to="/dashboard">Dashboard</Link>
-            </ListItemButton>
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-          <ListItem>
-            <ListItemButton style={{textDecoration:"none", fontWeight:"bold"}}>
-              <Link to="/dashboard">Dashboard</Link>
-            </ListItemButton>
-          </ListItem>
-        </List>
-      </Drawer>
-        <Main open={open}>
-          <DrawerHeader />
-          <Outlet />
-        </Main>
+        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, border: 'none'},
+            
+          }}
+        >
+          {drawer}
+        </Drawer>
+        <Drawer
+          variant="permanent"
+          sx={{
+            display: { xs: 'none', sm: 'block' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, border: 'none'},
+            border: 'none'
+          }}
+          // style={{border: '5px solid black'}}
+          open
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)`}, backgroundColor: '#E6FBFF',}}
+      >
+        <Toolbar />
+
+      <main>
+        <Outlet />
+      </main>
+
+      </Box>
     </Box>
-    </Container>
   );
+}
+
+Dashboard.propTypes = {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
+  window: PropTypes.func,
 };
 
 export default Dashboard;

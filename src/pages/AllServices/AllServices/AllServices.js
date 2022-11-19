@@ -1,6 +1,8 @@
 import { Button, CircularProgress, Grid, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import React, { useEffect, useState } from "react";
+import Footer from "../../../components/shares/Footer/Footer";
+import Header from "../../../components/shares/Header/Header";
 import SingleService from "../SingleService/SingleService";
 
 const AllServices = () => {
@@ -27,6 +29,7 @@ const AllServices = () => {
 
   return (
     <>
+      <Header />
       <Box>
         <Typography
           sx={{ fontWeight: "bold", m: 2 }}
@@ -130,6 +133,7 @@ const AllServices = () => {
           </Grid>
         </Container>
       </Box>
+      <Footer />
     </>
   );
 };
