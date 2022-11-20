@@ -45,6 +45,9 @@ function Dashboard(props) {
         <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="/dashboard/allOrders">
           <ListItemButton style={{paddingLeft: '40px'}} variant="text">All Orders</ListItemButton>
         </Link>
+        <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="/dashboard/myOrders">
+          <ListItemButton style={{paddingLeft: '40px'}} variant="text">My Orders</ListItemButton>
+        </Link>
         <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="review">
           <ListItemButton style={{paddingLeft: '40px'}} variant="text">Make Review</ListItemButton>
         </Link>
