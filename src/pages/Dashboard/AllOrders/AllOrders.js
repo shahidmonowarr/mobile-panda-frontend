@@ -7,7 +7,6 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { Container } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -48,10 +47,10 @@ const AllOrders = () => {
 
       const handleConfirmOrder = (id) => {};
     return (
-        <Container>
+        <>
       <h2>Order List</h2>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <Table sx={{ minWidth: "auto" }} aria-label="customized table">
           <TableHead>
             <TableRow>
               <StyledTableCell>Index</StyledTableCell>
@@ -88,7 +87,7 @@ const AllOrders = () => {
           </TableBody>
         </Table>
       </TableContainer>
-    </Container>
+    </>
     );
 };
 

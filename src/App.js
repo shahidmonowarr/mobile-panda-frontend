@@ -9,6 +9,7 @@ import RequireAuth from "./pages/Authentication/RequireAuth/RequireAuth";
 import Contact from "./pages/Contact/Contact";
 import AllOrders from "./pages/Dashboard/AllOrders/AllOrders";
 import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
+import Profile from "./pages/Dashboard/Dashboard/Profile";
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 
@@ -23,7 +24,7 @@ function App() {
           <Route path="contact-us" element={<Contact />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="allOrders" element={<AllOrders />} />
+          {/* <Route path="allOrders" element={<AllOrders />} /> */}
           <Route path="services" element={<AllServices />} />
           <Route
             path="services/:serviceId"
@@ -40,7 +41,10 @@ function App() {
                 <Dashboard/>
               </RequireAuth>
             }
-          />
+          >
+            <Route index element={<Profile />} />
+            <Route path="allOrders" element={<AllOrders />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
