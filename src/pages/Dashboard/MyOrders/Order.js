@@ -1,11 +1,11 @@
 import {
-    Button,
-    Card,
-    CardActions,
-    CardContent,
-    CardMedia,
-    Grid,
-    Typography
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
@@ -14,6 +14,16 @@ const Order = ({order, orders, setOrders}) => {
     const {service, image, price, status, _id} = order;
 
     const handleDeleteOrder = (id) => {
+        fetch(`http://localhost:5000/order/${id}`, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(result => {
+            if(result){
+                const remainingOrders = orders.filter(order => order._id !== id);
+                setOrders(remainingOrders);
+            }
+        })
     };
     return (
         <Grid item xs={12} md={6} lg={4}>
