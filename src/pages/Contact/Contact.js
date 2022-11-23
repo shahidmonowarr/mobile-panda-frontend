@@ -1,14 +1,11 @@
 import { Button, Container, Grid, TextField, Typography } from "@mui/material";
 import { Box } from '@mui/system';
 import React from 'react';
-import Footer from "../../components/shares/Footer/Footer";
-import Header from "../../components/shares/Header/Header";
 
 
 const Contact = () => {
     return (
       <>
-      <Header />
         <Container style={{marginTop: "100px", marginBottom: '90px'}}>
         <Grid container spacing={2} sx={{justifyContent: 'space-evenly', alignItems: 'center'}}>
           <Grid item lg={6} md={5} xs={10}>
@@ -39,7 +36,6 @@ const Contact = () => {
           </Grid>
         </Grid>
       </Container>
-      <Footer />
       </>
     );
 };
