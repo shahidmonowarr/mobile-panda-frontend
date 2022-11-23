@@ -7,6 +7,7 @@ import Login from "./pages/Authentication/Login/Login";
 import Register from "./pages/Authentication/Register/Register";
 import RequireAuth from "./pages/Authentication/RequireAuth/RequireAuth";
 import Contact from "./pages/Contact/Contact";
+import AddReview from "./pages/Dashboard/AddReview/AddReview";
 import AllOrders from "./pages/Dashboard/AllOrders/AllOrders";
 import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
 import Profile from "./pages/Dashboard/Dashboard/Profile";
@@ -46,6 +47,7 @@ function App() {
             <Route index element={<Profile />} />
             <Route path="allOrders" element={<AllOrders />} />
             <Route path="myOrders" element={<MyOrders />} />
+            <Route path="addReview" element={<AddReview />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

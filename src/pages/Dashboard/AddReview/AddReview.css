@@ -1,0 +1,12 @@
+@media screen and (min-width: 200px) and (max-width: 600px) {
+    .reviewFrom {
+        width: 100%;
+        margin: auto;
+    }
+}
+@media screen and (min-width: 600px){
+    .reviewFrom {
+        width: 60%;
+        margin: auto;
+    }
+}
