@@ -2,6 +2,8 @@ import { Alert, Button, Grid, Rating, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import Footer from "../../../components/shares/Footer/Footer";
+import Header from "../../../components/shares/Header/Header";
 import useServiceDetails from "../../../hooks/useServiceDetails/useServiceDetails";
 import CheckOut from "../../CheckOut/CheckOut";
 
@@ -15,6 +17,8 @@ const ServiceDetails = () => {
   const handleModalClose = () => setModalOpen(false);
 
   return (
+    <>
+    <Header />
     <Box>
       <Grid
         sx={{
@@ -160,6 +164,8 @@ const ServiceDetails = () => {
         setOrderSuccessful={setOrderSuccessful}
       ></CheckOut>
     </Box>
+    <Footer />
+    </>
   );
 };
 
