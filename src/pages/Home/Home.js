@@ -5,6 +5,7 @@ import Brands from '../../components/Brands/Brands';
 import Footer from '../../components/shares/Footer/Footer';
 import Header from '../../components/shares/Header/Header';
 import Specifications from '../../components/Specification/Specifications';
+import Reviews from '../AllReviews/Reviews/Reviews';
 import Services from '../AllServices/Services/Services';
 import Contact from '../Contact/Contact';
 
@@ -17,6 +18,7 @@ const Home = () => {
             <Services />
             <Accordion />
             <Brands />
+            <Reviews />
             <Contact />
             <Footer />
         </div>
