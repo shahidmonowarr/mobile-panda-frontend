@@ -4,6 +4,8 @@ import React from "react";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Footer from "../../../components/shares/Footer/Footer";
+import Header from "../../../components/shares/Header/Header";
 import Loading from "../../../components/shares/Loading/Loading";
 import auth from "../../../firebase.init";
 
@@ -45,15 +47,10 @@ const Login = () => {
   };
 
   return (
+    <>
+    <Header />
     <Container>
-      <Box sx={{ width: "200px", marginX: "auto", marginY: "50px" }}>
-        <img
-          style={{ width: "100%" }}
-          src="https://i.ibb.co/vqZxqCQ/Mobile-Panda-1-2.png"
-          alt=""
-        />
-      </Box>
-      <Grid sx={{ justifyContent: "center" }} container spacing={2}>
+      <Grid sx={{ justifyContent: "center", marginTop: '50px' }} container spacing={2}>
         <Grid item lg={5} md={5} sm={11} xs={11}>
           <Box
             style={{
@@ -62,6 +59,14 @@ const Login = () => {
               borderRadius: "15px",
             }}
           >
+            
+      <Box sx={{ width: "200px", marginX: "auto", marginY: "10px" }}>
+        <img
+          style={{ width: "100%" }}
+          src="https://i.ibb.co/vqZxqCQ/Mobile-Panda-1-2.png"
+          alt=""
+        />
+      </Box>
             <form onSubmit={handleSubmit(onSubmit)}>
               <TextField
                 sx={{ width: "100%" }}
@@ -187,6 +192,8 @@ const Login = () => {
         </Grid>
       </Grid>
     </Container>
+    <Footer />
+    </>
   );
 };
 

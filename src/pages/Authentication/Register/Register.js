@@ -8,6 +8,8 @@ import {
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import Footer from "../../../components/shares/Footer/Footer";
+import Header from "../../../components/shares/Header/Header";
 import Loading from "../../../components/shares/Loading/Loading";
 import auth from "../../../firebase.init";
 import useToken from "../../../hooks/useToken/useToken";
@@ -52,15 +54,10 @@ const Register = () => {
     console.log('update done');
   };
   return (
+    <>
+    <Header />
     <Container>
-      <Box sx={{ width: "200px", marginX: "auto", marginY: "50px" }}>
-        <img
-          style={{ width: "100%" }}
-          src="https://i.ibb.co/vqZxqCQ/Mobile-Panda-1-2.png"
-          alt=""
-        />
-      </Box>
-      <Grid sx={{ justifyContent: "center" }} container spacing={2}>
+      <Grid sx={{ justifyContent: "center", marginTop: '50px' }} container spacing={2}>
         <Grid item lg={5} md={5} sm={11} xs={11}>
           <Box
             style={{
@@ -69,6 +66,13 @@ const Register = () => {
               borderRadius: "15px",
             }}
           >
+            <Box sx={{ width: "200px", marginX: "auto", marginY: "10px" }}>
+        <img
+          style={{ width: "100%" }}
+          src="https://i.ibb.co/vqZxqCQ/Mobile-Panda-1-2.png"
+          alt=""
+        />
+      </Box>
             <form onSubmit={handleSubmit(onSubmit)}>
               <TextField
                 sx={{ width: "100%" }}
@@ -213,6 +217,8 @@ const Register = () => {
         </Grid>
       </Grid>
     </Container>
+    <Footer />
+    </>
   );
 };
 
