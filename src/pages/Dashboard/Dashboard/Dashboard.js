@@ -13,11 +13,13 @@ import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import useAdmin from '../../../hooks/useAdmin/useAdmin';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
   
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -44,18 +46,22 @@ function Dashboard(props) {
         <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="/dashboard">
           <ListItemButton style={{paddingLeft: '40px'}} variant="text">Profile</ListItemButton>
         </Link>
-        <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="/dashboard/users">
-          <ListItemButton style={{paddingLeft: '40px'}} variant="text">All Users</ListItemButton>
-        </Link>
-        <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="/dashboard/allOrders">
-          <ListItemButton style={{paddingLeft: '40px'}} variant="text">All Orders</ListItemButton>
-        </Link>
+        
         <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="/dashboard/myOrders">
           <ListItemButton style={{paddingLeft: '40px'}} variant="text">My Orders</ListItemButton>
         </Link>
         <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="addReview">
           <ListItemButton style={{paddingLeft: '40px'}} variant="text">Add Review</ListItemButton>
         </Link>
+        {admin && 
+        <>
+        <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="/dashboard/users">
+          <ListItemButton style={{paddingLeft: '40px'}} variant="text">All Users</ListItemButton>
+        </Link>
+        <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="/dashboard/allOrders">
+          <ListItemButton style={{paddingLeft: '40px'}} variant="text">All Orders</ListItemButton>
+        </Link>
+        </>}
         <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="/">
           <ListItemButton style={{paddingLeft: '40px'}} variant="text">Back To Home</ListItemButton>
         </Link>
