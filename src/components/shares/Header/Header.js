@@ -24,6 +24,7 @@ const Header = () => {
 
   const logOut = () => {
     signOut(auth);
+    localStorage.removeItem("token");
   };
 
   const handleOpenNavMenu = (event) => {

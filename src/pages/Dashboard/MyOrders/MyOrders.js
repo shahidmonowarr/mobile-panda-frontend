@@ -1,21 +1,39 @@
 import { Grid, Typography } from '@mui/material';
 import { Container } from '@mui/system';
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Order from './Order';
 
 const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
         if(user){
-            fetch(`http://localhost:5000/order?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => setMyOrders(data));
+            fetch(`http://localhost:5000/order?email=${user.email}`, {
+                method: 'GET',
+                headers: {
+                  'authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            .then(res => {
+              console.log("res",res);
+              if(res.status === 401 || res.status === 403){
+                signOut(auth);
+                localStorage.removeItem('token');
+                navigate('/');
+              }
+              return res.json();
+            })
+            .then(data => {
+              
+              setMyOrders(data)
+            });
         }
     }, [user]);
     return (
