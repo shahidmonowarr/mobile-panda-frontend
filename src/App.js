@@ -7,6 +7,7 @@ import AllServices from "./pages/AllServices/AllServices/AllServices";
 import ServiceDetails from "./pages/AllServices/ServiceDetails/ServiceDetails";
 import Login from "./pages/Authentication/Login/Login";
 import Register from "./pages/Authentication/Register/Register";
+import RequireAdmin from "./pages/Authentication/RequireAdmin/RequireAdmin";
 import RequireAuth from "./pages/Authentication/RequireAuth/RequireAuth";
 import Contact from "./pages/Contact/Contact";
 import AddReview from "./pages/Dashboard/AddReview/AddReview";
@@ -48,10 +49,10 @@ function App() {
             }
           >
             <Route index element={<Profile />} />
-            <Route path="allOrders" element={<AllOrders />} />
+            <Route path="allOrders" element={<RequireAdmin><AllOrders /></RequireAdmin>} />
             <Route path="myOrders" element={<MyOrders />} />
             <Route path="addReview" element={<AddReview />} />
-            <Route path="users" element={<Users />} />
+            <Route path="users" element={<RequireAdmin><Users /></RequireAdmin>} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
