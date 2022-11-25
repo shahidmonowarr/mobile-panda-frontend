@@ -12,6 +12,7 @@ import AllOrders from "./pages/Dashboard/AllOrders/AllOrders";
 import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
 import Profile from "./pages/Dashboard/Dashboard/Profile";
 import MyOrders from "./pages/Dashboard/MyOrders/MyOrders";
+import Users from "./pages/Dashboard/Users/Users";
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 
@@ -48,6 +49,7 @@ function App() {
             <Route path="allOrders" element={<AllOrders />} />
             <Route path="myOrders" element={<MyOrders />} />
             <Route path="addReview" element={<AddReview />} />
+            <Route path="users" element={<Users />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
