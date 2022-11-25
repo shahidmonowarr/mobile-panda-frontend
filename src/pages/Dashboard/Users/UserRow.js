@@ -2,6 +2,7 @@ import { Button, TableRow } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -23,8 +24,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
   }));
 
-const UserRow = ({user, index}) => {
-    const {email , name, role} = user;
+const UserRow = ({user, index, refetch}) => {
+    const {email , role} = user;
 
     const makeAdmin = () => {
         fetch(`http://localhost:5000/user/admin/${email}`, {
@@ -33,9 +34,17 @@ const UserRow = ({user, index}) => {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
-        .then(res => res.json())
+        .then(res => {
+            if(res.status === 403){
+                toast.error('Failed to Make an admin');
+            }
+            return res.json()})
         .then(data => {
-            console.log(data);
+            if(data.modifiedCount > 0){
+                refetch();
+                toast.success('Admin Created Successfully');
+            }
+            
         })
     }
 

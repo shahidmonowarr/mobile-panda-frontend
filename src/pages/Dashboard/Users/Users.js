@@ -22,7 +22,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   }));
 
 const Users = () => {
-    const { data: users, isLoading } = useQuery('users', () => fetch('http://localhost:5000/user',{
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user',{
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('token')}`
@@ -51,7 +51,7 @@ const Users = () => {
             key={user._id}
             user={user}
             index={index}
-            // refetch={refetch}
+            refetch={refetch}
             ></UserRow>)}
           </TableBody>
         </Table>

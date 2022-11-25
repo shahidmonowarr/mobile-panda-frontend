@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import BackToTop from "./components/shares/BackToTop/BackToTop";
 import AllServices from "./pages/AllServices/AllServices/AllServices";
@@ -53,6 +55,7 @@ function App() {
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ToastContainer />
       </BrowserRouter>
     </div>
   );
