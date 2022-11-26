@@ -9,21 +9,31 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { toast } from "react-toastify";
 
 const Order = ({order, orders, setOrders}) => {
     const {service, image, price, status, _id} = order;
 
+    // for delete order
     const handleDeleteOrder = (id) => {
-        fetch(`http://localhost:5000/order/${id}`, {
-            method: 'DELETE'
+      const proceed = window.confirm("Are Sure To Cancel This Order?");
+      if (proceed) {
+        const url = `http://localhost:5000/order/${id}`;
+        fetch(url, {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
         })
-        .then(res => res.json())
-        .then(result => {
-            if(result){
-                const remainingOrders = orders.filter(order => order._id !== id);
-                setOrders(remainingOrders);
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              toast("Order Deleted SuccessFully");
+              const remaining = orders.filter((order) => order._id !== id);
+              setOrders(remaining);
             }
-        })
+          });
+      }
     };
     return (
         <Grid item xs={12} md={6} lg={4}>

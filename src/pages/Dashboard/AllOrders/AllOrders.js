@@ -7,7 +7,10 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
+import Loading from '../../../components/shares/Loading/Loading';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.head}`]: {
@@ -30,25 +33,73 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
       }));
       
 const AllOrders = () => {
-    const [allOrders, setAllOrders] = useState([]);
-    
 
-      useEffect(() => {
-        fetch('http://localhost:5000/order')
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            setAllOrders(data);
-        })
-      }, [allOrders]);
+  // for loading data from server
+  const {
+    data: allOrder,
+    setAllOrder,
+    isLoading,
+    refetch,
+  } = useQuery("allOrder", () =>
+    fetch("http://localhost:5000/order", {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then((res) => res.json())
+  );
 
-      const handleDeleteOrder = (id) => {
-      };
+  if (isLoading) {
+    return <Loading />;
+  }
 
-      const handleConfirmOrder = (id) => {};
+      
+
+      //for confirm order
+  const handleConfirmOrder = (id) => {
+    const matchedOrder = allOrder.filter((order) => order._id === id);
+    matchedOrder[0].status = "Confirmed";
+
+    fetch(`http://localhost:5000/order/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(matchedOrder),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast("Order Confirmed");
+        refetch();
+      });
+  };
+
+  //for delete order
+  const handleDeleteOrder = (id) => {
+    const proceed = window.confirm("Are Sure To Cancel This Order?");
+    if (proceed) {
+      const url = `http://localhost:5000/order/${id}`;
+      fetch(url, {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            toast("Order Deleted SuccessFully");
+            const remaining = allOrder.filter((order) => order._id !== id);
+            setAllOrder(remaining);
+          }
+        });
+    }
+  };
+
     return (
         <>
-      <h2>Order List</h2>
+      <h2>Order List: {allOrder.length}</h2>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: "auto" }} aria-label="customized table">
           <TableHead>
@@ -62,7 +113,7 @@ const AllOrders = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {allOrders.map((order, index) => (
+            {allOrder.map((order, index) => (
               <StyledTableRow key={order._id}>
                 <StyledTableCell component="th" scope="row">
                 {index + 1}
