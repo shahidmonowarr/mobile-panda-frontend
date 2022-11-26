@@ -35,7 +35,7 @@ const AddReview = () => {
             ...reviewData,
           };
           console.log(review);
-        fetch("http://localhost:5000/review", {
+        fetch("https://mobile-panda.onrender.com/review", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

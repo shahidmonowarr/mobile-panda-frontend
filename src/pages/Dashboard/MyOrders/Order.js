@@ -18,7 +18,7 @@ const Order = ({order, orders, setOrders}) => {
     const handleDeleteOrder = (id) => {
       const proceed = window.confirm("Are Sure To Cancel This Order?");
       if (proceed) {
-        const url = `http://localhost:5000/order/${id}`;
+        const url = `https://mobile-panda.onrender.com/order/${id}`;
         fetch(url, {
           method: "DELETE",
           headers: {

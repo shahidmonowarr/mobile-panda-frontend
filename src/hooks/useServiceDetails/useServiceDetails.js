@@ -4,7 +4,7 @@ const useServiceDetails = (serviceId) => {
   const [serviceDetails, setServiceDetails] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/service/${serviceId}`)
+    fetch(`https://mobile-panda.onrender.com/service/${serviceId}`)
       .then((res) => res.json())
       .then((data) => {
         setServiceDetails(data);});

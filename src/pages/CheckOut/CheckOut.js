@@ -35,7 +35,7 @@ const CheckOut = ({
             description: description,
             status: "Pending",
         }
-        fetch("http://localhost:5000/order", {
+        fetch("https://mobile-panda.onrender.com/order", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

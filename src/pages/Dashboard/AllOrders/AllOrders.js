@@ -41,7 +41,7 @@ const AllOrders = () => {
     isLoading,
     refetch,
   } = useQuery("allOrder", () =>
-    fetch("http://localhost:5000/order", {
+    fetch("https://mobile-panda.onrender.com/order", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -60,7 +60,7 @@ const AllOrders = () => {
     const matchedOrder = allOrder.filter((order) => order._id === id);
     matchedOrder[0].status = "Confirmed";
 
-    fetch(`http://localhost:5000/order/${id}`, {
+    fetch(`https://mobile-panda.onrender.com/order/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -79,7 +79,7 @@ const AllOrders = () => {
   const handleDeleteOrder = (id) => {
     const proceed = window.confirm("Are Sure To Cancel This Order?");
     if (proceed) {
-      const url = `http://localhost:5000/order/${id}`;
+      const url = `https://mobile-panda.onrender.com/order/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {

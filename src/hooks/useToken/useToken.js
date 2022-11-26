@@ -9,7 +9,7 @@ const useToken = user => {
         const currentUser = {email: email};
 
         if(email){
-            fetch(`http://localhost:5000/user/${email}`, {
+            fetch(`https://mobile-panda.onrender.com/user/${email}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
