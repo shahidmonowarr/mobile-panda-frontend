@@ -67,7 +67,7 @@ const Header = () => {
               <NavLink to="/">
                 <img
                   style={{ width: "170px", padding: "12px" }}
-                  src="https://i.ibb.co/vqZxqCQ/Mobile-Panda-1-2.png"
+                  src="https://i.ibb.co/G3tn5M1/Mobile-Panda-1-2.png"
                   alt=""
                 />
               </NavLink>
@@ -138,7 +138,7 @@ const Header = () => {
               <NavLink to="/">
                 <img
                   style={{ width: "150px", padding: "12px" }}
-                  src="https://i.ibb.co/vqZxqCQ/Mobile-Panda-1-2.png"
+                  src="https://i.ibb.co/G3tn5M1/Mobile-Panda-1-2.png"
                   alt=""
                 />
               </NavLink>

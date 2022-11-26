@@ -22,7 +22,7 @@ const Footer = () => {
               <Box sx={{ width: "250px" }}>
                 <img
                   style={{ width: "100%" }}
-                  src="https://i.ibb.co/vqZxqCQ/Mobile-Panda-1-2.png"
+                  src="https://i.ibb.co/G3tn5M1/Mobile-Panda-1-2.png"
                   alt=""
                 />
               </Box>
