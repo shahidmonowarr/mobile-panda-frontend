@@ -38,9 +38,6 @@ function Dashboard(props) {
        <img style={{width: '150px',}} src="https://i.ibb.co/vqZxqCQ/Mobile-Panda-1-2.png" alt="" />
        </Link>
        </Box>
-       {/* <Divider sx={{display: {sm: 'none'}}} /> */}
-
-      {/* <Toolbar /> */}
       
       <nav style={{border: 'none'}}>
         <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="/dashboard">

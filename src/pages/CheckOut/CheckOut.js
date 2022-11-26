@@ -47,7 +47,7 @@ const CheckOut = ({
                 if (data) {
                     setOrderSuccessful(true);
                     handleModalClose();
-                    console.log(data);
+                    // console.log(data);
                 }
             });
     };

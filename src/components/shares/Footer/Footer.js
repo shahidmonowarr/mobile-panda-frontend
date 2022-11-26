@@ -106,12 +106,12 @@ const Footer = () => {
               gutterBottom
               component="div"
             >
-              <Link
+              <a
                 style={{ textDecoration: "none", color: "black" }}
-                to="/services"
+                href="https://shahidportfolio.netlify.app/"
               >
-                Testimonials
-              </Link>
+                Developer Portfolio
+              </a>
             </Typography>
           </Grid>
 

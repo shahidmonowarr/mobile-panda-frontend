@@ -120,13 +120,13 @@ const Services = () => {
                   .slice(0, 6)
                   .map((singleService) => (
                     <SingleService
-                      key={singleService.serviceName}
+                      key={singleService._id}
                       singleService={singleService}
                     ></SingleService>
                   ))
               : tempServices.map((singleService) => (
                   <SingleService
-                    key={singleService.serviceName}
+                    key={singleService._id}
                     singleService={singleService}
                   ></SingleService>
                 ))}

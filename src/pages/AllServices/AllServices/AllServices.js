@@ -120,13 +120,13 @@ const AllServices = () => {
             {tempServices.length === 0
               ? services.map((singleService) => (
                   <SingleService
-                    key={singleService.serviceName}
+                    key={singleService._id}
                     singleService={singleService}
                   ></SingleService>
                 ))
               : tempServices.map((singleService) => (
                   <SingleService
-                    key={singleService.serviceName}
+                    key={singleService._id}
                     singleService={singleService}
                   ></SingleService>
                 ))}
