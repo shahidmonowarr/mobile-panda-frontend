@@ -1,5 +1,6 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Banner.css";
 
 const Banner = () => {
@@ -33,6 +34,7 @@ const Banner = () => {
                 Let's find your favourite mobile here. <br />
                 With the best price and quality. Also we have a lot of offers. Find out more. Grab your mobile now.
               </Typography>
+              <Link style={{ textDecoration: "none" }} to="/services">
               <Button
                 sx={{
                   backgroundColor: "black",
@@ -45,6 +47,7 @@ const Banner = () => {
               >
                 Explore
               </Button>
+              </Link>
             </Box>
           </Grid>
           <Grid item xs={12} lg={5}>

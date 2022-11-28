@@ -35,7 +35,7 @@ function Dashboard(props) {
     <div style={{border: 'none'}}>
        <Box sx={{ marginLeft: 5, marginTop: 3, marginBottom: 5}}>
        <Link to="/" style={{textDecoration: 'none', color: 'black'}}> 
-       <img style={{width: '150px',}} src="https://i.ibb.co/vqZxqCQ/Mobile-Panda-1-2.png" alt="" />
+       <img style={{width: '150px',}} src="https://i.ibb.co/G3tn5M1/Mobile-Panda-1-2.png" alt="" />
        </Link>
        </Box>
       
