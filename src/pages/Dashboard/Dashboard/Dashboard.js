@@ -52,6 +52,12 @@ function Dashboard(props) {
         </Link>
         {admin && 
         <>
+        <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="/dashboard/manageService/add">
+          <ListItemButton style={{paddingLeft: '40px'}} variant="text">Add Service</ListItemButton>
+        </Link>
+        <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="/dashboard/manageService">
+          <ListItemButton style={{paddingLeft: '40px'}} variant="text">Manage Services</ListItemButton>
+        </Link>
         <Link style={{textDecoration: 'none', color: 'black', fontSize: "xxl-large,"}}  to="/dashboard/users">
           <ListItemButton style={{paddingLeft: '40px'}} variant="text">All Users</ListItemButton>
         </Link>

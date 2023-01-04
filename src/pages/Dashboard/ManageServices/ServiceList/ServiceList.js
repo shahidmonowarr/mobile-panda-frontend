@@ -19,7 +19,7 @@ const ServiceList = () => {
   const [deleteLoading, setDeleteLoading] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/service").then((res) => {
+    axios.get("https://mobile-panda.onrender.com/service").then((res) => {
       setServices(res.data);
       setLoading(false);
     });
@@ -28,7 +28,7 @@ const ServiceList = () => {
   const handleDeleteService = id => {
     setDeleteLoading(true);
     const remaining = services.filter(service => service._id !== id);
-    axios.delete(`http://localhost:5000/service/${id}`)
+    axios.delete(`https://mobile-panda.onrender.com/service/${id}`)
         .then(res => {
             setServices(remaining);
             toast('Successfully Deleted');
@@ -83,10 +83,10 @@ const ServiceList = () => {
                       variant="contained"
                       size="small"
                       color="info"
-                      sx={{ mr: 1, textDecoration: "none" }}
+                      sx={{ mr: 1, py:1, textDecoration: "none" }}
                       to={`/dashboard/manageService/update/${service._id}`}
                     >
-                      Edit
+                      Update
                     </Button>
                     <Button
                       variant="contained"

@@ -19,7 +19,7 @@ const UpdateService = () => {
 
   const handleServiceUpload = (e) => {
     setLoading(true);
-    axios.put(`http://localhost:5000/service/${id}`, service)
+    axios.put(`https://mobile-panda.onrender.com/service/${id}`, service)
       .then((res) => {
         toast("Service Updated Successfully");
       })
@@ -31,7 +31,7 @@ const UpdateService = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/service/${id}`).then((res) => {
+    axios.get(`https://mobile-panda.onrender.com/service/${id}`).then((res) => {
       setService(res.data);
     });
   }, [id]);

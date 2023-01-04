@@ -20,7 +20,7 @@ const AddService = () => {
   const handleServiceUpload = (e) => {
     setLoading(true);
     axios
-      .post("http://localhost:5000/service", service)
+      .post("https://mobile-panda.onrender.com/service", service)
       .then((res) => {
         if (res.data.insertedId) {
           toast("service inserted successfully");
