@@ -14,6 +14,9 @@ import AddReview from "./pages/Dashboard/AddReview/AddReview";
 import AllOrders from "./pages/Dashboard/AllOrders/AllOrders";
 import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
 import Profile from "./pages/Dashboard/Dashboard/Profile";
+import ManageService from "./pages/Dashboard/ManageServices/ManageService";
+import ServiceList from "./pages/Dashboard/ManageServices/ServiceList/ServiceList";
+import UpdateService from "./pages/Dashboard/ManageServices/UpdateService/UpdateService";
 import MyOrders from "./pages/Dashboard/MyOrders/MyOrders";
 import Users from "./pages/Dashboard/Users/Users";
 import Home from "./pages/Home/Home";
@@ -44,15 +47,33 @@ function App() {
             path="dashboard"
             element={
               <RequireAuth>
-                <Dashboard/>
+                <Dashboard />
               </RequireAuth>
             }
           >
             <Route index element={<Profile />} />
-            <Route path="allOrders" element={<RequireAdmin><AllOrders /></RequireAdmin>} />
+            <Route
+              path="allOrders"
+              element={
+                <RequireAdmin>
+                  <AllOrders />
+                </RequireAdmin>
+              }
+            />
             <Route path="myOrders" element={<MyOrders />} />
             <Route path="addReview" element={<AddReview />} />
-            <Route path="users" element={<RequireAdmin><Users /></RequireAdmin>} />
+            <Route path="manageService" element={<ManageService />}>
+              <Route path="" element={<ServiceList />}></Route>
+              <Route path="update/:id" element={<UpdateService />}></Route>
+            </Route>
+            <Route
+              path="users"
+              element={
+                <RequireAdmin>
+                  <Users />
+                </RequireAdmin>
+              }
+            />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
