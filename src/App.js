@@ -14,6 +14,7 @@ import AddReview from "./pages/Dashboard/AddReview/AddReview";
 import AllOrders from "./pages/Dashboard/AllOrders/AllOrders";
 import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
 import Profile from "./pages/Dashboard/Dashboard/Profile";
+import AddService from "./pages/Dashboard/ManageServices/AddService/AddService";
 import ManageService from "./pages/Dashboard/ManageServices/ManageService";
 import ServiceList from "./pages/Dashboard/ManageServices/ServiceList/ServiceList";
 import UpdateService from "./pages/Dashboard/ManageServices/UpdateService/UpdateService";
@@ -64,6 +65,7 @@ function App() {
             <Route path="addReview" element={<AddReview />} />
             <Route path="manageService" element={<ManageService />}>
               <Route path="" element={<ServiceList />}></Route>
+              <Route path="add" element={<AddService />}></Route>
               <Route path="update/:id" element={<UpdateService />}></Route>
             </Route>
             <Route
