@@ -66,6 +66,7 @@ const ServiceDetails = () => {
                         sx={{ marginTop: "-30px" }}
                         variant="body2"
                         defaultValue={4.4}
+                        value={parseInt(serviceDetails.rating)}
                         readOnly
                       />
                     </Box>
@@ -76,7 +77,7 @@ const ServiceDetails = () => {
                         gutterBottom
                         component="div"
                       >
-                        Based on 185 reviews
+                        Based on {serviceDetails.reviews} reviews
                       </Typography>
                     </Box>
                   </Box>

@@ -37,8 +37,8 @@ const AddService = () => {
   return (
     <>
       <Paper
-        sx={{ marginX: "auto", textAlign: "center", p: 4 }}
-        style={{ height: "auto", width: "70%" }}
+        sx={{ marginX: "auto", textAlign: "center", p: 3 }}
+        style={{ height: "auto", width: "80%" }}
       >
         <form onSubmit={handleServiceUpload}>
           <TextField
